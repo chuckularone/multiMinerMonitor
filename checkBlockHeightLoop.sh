@@ -36,7 +36,12 @@ while true; do
     then
         minerHeight02=$(docker exec $MINER02 miner info height | awk '{print $2}')
         testVal02=$(expr $actual - $minerHeight02)   
-        echo "Miner02 Height:\033[1m $minerHeight02\033[0m    \033[41m$testVal02\033[m"
+        if [ $testVal02 -ne 0 ]
+        then
+            echo "Miner02 Height:\033[1m $minerHeight02\033[0m    \033[41m$testVal02\033[m"
+        else
+            echo "Miner02 Height:\033[1m $minerHeight02\033[0m    \033[33m$testVal02\033[m"
+        fi
         echo "MINER02, $datenow, $testVal02" >> log.out
     fi
 
@@ -44,7 +49,12 @@ while true; do
     then
         minerHeight03=$(docker exec $MINER03 miner info height | awk '{print $2}')
         testVal03=$(expr $actual - $minerHeight03)   
-        echo "Miner03 Height:\033[1m $minerHeight03\033[0m    \033[41m$testVal03\033[m"
+        if [ $testVal03 -ne 0 ]
+        then
+            echo "Miner03 Height:\033[1m $minerHeight03\033[0m    \033[41m$testVal03\033[m"
+        else
+            echo "Miner03 Height:\033[1m $minerHeight03\033[0m    \033[33m$testVal03\033[m"
+        fi
         echo "MINER03, $datenow, $testVal02" >> log.out
     fi    
 
