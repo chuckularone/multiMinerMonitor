@@ -4,10 +4,12 @@ MINER01=" 1680 "
 MINER02=" 1681 "
 MINER03=" 1682 "
 MINER04=" 1683 "
+
 NAME01="miner01"
 NAME02="miner02"
 NAME03="miner03"
 NAME04="miner04"
+
 while true; do 
     bloop=$(curl https://api.helium.io/v1/blocks/height)
     blah=$(echo $bloop | rev | cut -d":" -f1 | rev)
