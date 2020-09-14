@@ -1,7 +1,9 @@
-MINER01="1680"
-MINER02="1681"
-MINER03="1682"
-MINER04="1683"
+#!/usr/bin/sh
+
+MINER01=" 1680 "
+MINER02=" 1681 "
+MINER03=" 1682 "
+MINER04=" 1683 "
 NAME01="miner01"
 NAME02="miner02"
 NAME03="miner03"
@@ -15,7 +17,7 @@ while true; do
     echo " "
     echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     datenow=$(date)
-    echo "\033[32m$datenow\033[m"
+    echo "  \033[32m$datenow\033[m"
     echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     echo " "
 
@@ -35,9 +37,10 @@ while true; do
         testVal01=$(expr $actual - $minerHeight01)   
         if [ $testVal01 -ge 1 ]
         then
-            echo "Miner01 Height:\033[1m $minerHeight01\033[0m    \033[41m$testVal01\033[m"
+            echo "  Miner01 Height:\033[1m $minerHeight01\033[0m    \033[41m$testVal01\033[m"
+
         else
-            echo "Miner01 Height:\033[1m $minerHeight01\033[0m    \033[33m$testVal01\033[m"
+            echo "  Miner01 Height:\033[1m $minerHeight01\033[0m    \033[33m$testVal01\033[m"
         fi
         echo "MINER01, $datenow, $testVal01" >> log.out
     fi
@@ -48,9 +51,9 @@ while true; do
         testVal02=$(expr $actual - $minerHeight02)   
         if [ $testVal02 -ge 1 ] 
         then
-            echo "Miner02 Height:\033[1m $minerHeight02\033[0m    \033[41m$testVal02\033[m"
+            echo "  Miner02 Height:\033[1m $minerHeight02\033[0m    \033[41m$testVal02\033[m"
         else
-            echo "Miner02 Height:\033[1m $minerHeight02\033[0m    \033[33m$testVal02\033[m"
+            echo "  Miner02 Height:\033[1m $minerHeight02\033[0m    \033[33m$testVal02\033[m"
         fi
         echo "MINER02, $datenow, $testVal02" >> log.out
     fi
@@ -61,9 +64,9 @@ while true; do
         testVal03=$(expr $actual - $minerHeight03)   
         if [ $testVal03 -ge 1 ] 
         then
-            echo "Miner03 Height:\033[1m $minerHeight03\033[0m    \033[41m$testVal03\033[m"
+            echo "  Miner03 Height:\033[1m $minerHeight03\033[0m    \033[41m$testVal03\033[m"
         else
-            echo "Miner03 Height:\033[1m $minerHeight03\033[0m    \033[33m$testVal03\033[m"
+            echo "  Miner03 Height:\033[1m $minerHeight03\033[0m    \033[33m$testVal03\033[m"
         fi
         echo "MINER03, $datenow, $testVal03" >> log.out
     fi
@@ -75,15 +78,15 @@ while true; do
         testVal04=$(expr $actual - $minerHeight04)   
         if [ $testVal04 -ge 1 ] 
         then
-            echo "Miner04 Height:\033[1m $minerHeight04\033[0m    \033[41m$testVal04\033[m"
+            echo "  Miner04 Height:\033[1m $minerHeight04\033[0m    \033[41m$testVal04\033[m"
         else
-            echo "Miner04 Height:\033[1m $minerHeight04\033[0m    \033[33m$testVal04\033[m"
+            echo "  Miner04 Height:\033[1m $minerHeight04\033[0m    \033[33m$testVal04\033[m"
         fi
         echo "MINER04, $datenow, $testVal04" >> log.out
     fi
 
     echo " "
-    echo "Actual  Height:\033[1m $actual\033[0m" 
+    echo "  Actual  Height:\033[1m $actual\033[0m" 
     echo " "
     echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     echo " "
