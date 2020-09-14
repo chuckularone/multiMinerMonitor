@@ -23,7 +23,12 @@ while true; do
     then
         minerHeight01=$(docker exec $MINER01 miner info height | awk '{print $2}')
         testVal01=$(expr $actual - $minerHeight01)   
-        echo "Miner01 Height:\033[1m $minerHeight01\033[0m    \033[41m$testVal01\033[m"
+        if [ $testVal01 -ne 0 ]
+        then
+            echo "Miner01 Height:\033[1m $minerHeight01\033[0m    \033[41m$testVal01\033[m"
+        else
+            echo "Miner01 Height:\033[1m $minerHeight01\033[0m    \033[33m$testVal01\033[m"
+        fi
         echo "MINER01, $datenow, $testVal01" >> log.out
     fi
 
