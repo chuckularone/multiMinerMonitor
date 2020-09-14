@@ -23,7 +23,7 @@ while true; do
     then
         minerHeight01=$(docker exec $MINER01 miner info height | awk '{print $2}')
         testVal01=$(expr $actual - $minerHeight01)   
-        if [ $testVal01 -ne 0 ]
+        if [ $testVal01 -ne 0 ] #||  $testVal01 -lt 0 ]
         then
             echo "Miner01 Height:\033[1m $minerHeight01\033[0m    \033[41m$testVal01\033[m"
         else
@@ -36,7 +36,7 @@ while true; do
     then
         minerHeight02=$(docker exec $MINER02 miner info height | awk '{print $2}')
         testVal02=$(expr $actual - $minerHeight02)   
-        if [ $testVal02 -ne 0 ]
+        if [ $testVal02 -ne 0 ] #||  $testVal02 -lt 0 ]
         then
             echo "Miner02 Height:\033[1m $minerHeight02\033[0m    \033[41m$testVal02\033[m"
         else
@@ -49,7 +49,7 @@ while true; do
     then
         minerHeight03=$(docker exec $MINER03 miner info height | awk '{print $2}')
         testVal03=$(expr $actual - $minerHeight03)   
-        if [ $testVal03 -ne 0 ]
+        if [ $testVal03 -ne 0 ] #||  $testVal03 -lt 0 ]
         then
             echo "Miner03 Height:\033[1m $minerHeight03\033[0m    \033[41m$testVal03\033[m"
         else
@@ -63,6 +63,6 @@ while true; do
     echo " "
     echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     echo " "
-    docker ps
+    #docker ps
     sleep 30
 done
