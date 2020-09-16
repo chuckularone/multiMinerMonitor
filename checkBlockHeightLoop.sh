@@ -10,6 +10,11 @@ NAME02="miner02"
 NAME03="miner03"
 NAME04="miner04"
 
+animal01=$(docker exec NAME01 miner info name)
+animal02=$(docker exec NAME02 miner info name)
+animal03=$(docker exec NAME03 miner info name)
+animal04=$(docker exec NAME04 miner info name)
+
 while true; do 
     bloop=$(curl https://api.helium.io/v1/blocks/height)
     blah=$(echo $bloop | rev | cut -d":" -f1 | rev)
@@ -17,10 +22,10 @@ while true; do
 
     clear
     echo " "
-    echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+    echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     datenow=$(date)
     echo "  \033[32m$datenow\033[m"
-    echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+    echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     echo " "
 
     test01=$(ps -ef | grep "$MINER01")
@@ -39,10 +44,10 @@ while true; do
         testVal01=$(expr $actual - $minerHeight01)   
         if [ $testVal01 -ge 1 ]
         then
-            echo "  Miner01 Height:\033[1m $minerHeight01\033[0m    \033[41m$testVal01\033[m"
+            echo "  Miner01 Height:\033[1m $minerHeight01\033[0m    \033[41m$testVal01\033[m  $animal01"
 
         else
-            echo "  Miner01 Height:\033[1m $minerHeight01\033[0m    \033[33m$testVal01\033[m"
+            echo "  Miner01 Height:\033[1m $minerHeight01\033[0m    \033[33m$testVal01\033[m  $animal01"
         fi
         echo "MINER01, $datenow, $testVal01" >> log.out
     fi
@@ -53,9 +58,9 @@ while true; do
         testVal02=$(expr $actual - $minerHeight02)   
         if [ $testVal02 -ge 1 ] 
         then
-            echo "  Miner02 Height:\033[1m $minerHeight02\033[0m    \033[41m$testVal02\033[m"
+            echo "  Miner02 Height:\033[1m $minerHeight02\033[0m    \033[41m$testVal02\033[m  $animal02"
         else
-            echo "  Miner02 Height:\033[1m $minerHeight02\033[0m    \033[33m$testVal02\033[m"
+            echo "  Miner02 Height:\033[1m $minerHeight02\033[0m    \033[33m$testVal02\033[m  $animal02"
         fi
         echo "MINER02, $datenow, $testVal02" >> log.out
     fi
@@ -66,9 +71,9 @@ while true; do
         testVal03=$(expr $actual - $minerHeight03)   
         if [ $testVal03 -ge 1 ] 
         then
-            echo "  Miner03 Height:\033[1m $minerHeight03\033[0m    \033[41m$testVal03\033[m"
+            echo "  Miner03 Height:\033[1m $minerHeight03\033[0m    \033[41m$testVal03\033[m  $animal03"
         else
-            echo "  Miner03 Height:\033[1m $minerHeight03\033[0m    \033[33m$testVal03\033[m"
+            echo "  Miner03 Height:\033[1m $minerHeight03\033[0m    \033[33m$testVal03\033[m  $animal03"
         fi
         echo "MINER03, $datenow, $testVal03" >> log.out
     fi
@@ -80,9 +85,9 @@ while true; do
         testVal04=$(expr $actual - $minerHeight04)   
         if [ $testVal04 -ge 1 ] 
         then
-            echo "  Miner04 Height:\033[1m $minerHeight04\033[0m    \033[41m$testVal04\033[m"
+            echo "  Miner04 Height:\033[1m $minerHeight04\033[0m    \033[41m$testVal04\033[m  $animal04"
         else
-            echo "  Miner04 Height:\033[1m $minerHeight04\033[0m    \033[33m$testVal04\033[m"
+            echo "  Miner04 Height:\033[1m $minerHeight04\033[0m    \033[33m$testVal04\033[m  $animal04"
         fi
         echo "MINER04, $datenow, $testVal04" >> log.out
     fi
@@ -90,7 +95,7 @@ while true; do
     echo " "
     echo "  Actual  Height:\033[1m $actual\033[0m" 
     echo " "
-    echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+    echo "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
     echo " "
     #docker ps
     sleep 30
